@@ -10,8 +10,8 @@ Climate Canvas is a Streamlit web application that allows you to visualize weath
 - The app prevents you from entering more than 10 cities and notifies you when you try to fetch weather data for a city that's already in the table.
 - You can reset the table and the plot at any time using the "Reset" button.
 
-## Screenshots:
-
+## Screenshot:
+![image](https://github.com/codingis4noobs2/Climate-Canvas/assets/87560178/eaef024e-bdaf-4eef-9bbc-4419999e3434)
 
 ## Getting Started
 
