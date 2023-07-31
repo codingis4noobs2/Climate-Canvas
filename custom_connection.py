@@ -19,7 +19,7 @@ class OpenWeatherApiConnection(ExperimentalBaseConnection):
         }
 
         # Make the API call using the 'requests' library
-        response = self._instance.get(api_url, params=params)
+        response = self._instance.get(weather_url, params=params)
 
         # Check if the API call was successful (status code 200)
         if response.status_code == 200:
