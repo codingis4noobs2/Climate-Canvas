@@ -33,6 +33,9 @@ pip install -r requirements.txt
 ```
 
 4. You need to set your OpenWeather API key, Get your own API key from here: [OpenWeather](https://home.openweathermap.org/api_keys). Replace st.secrets[API_KEY] with your API key.
+```
+api_key = "YOUR_API_KEY"
+```
 
 5. Run the app:
 ```
