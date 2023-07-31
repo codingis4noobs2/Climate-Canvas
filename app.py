@@ -24,7 +24,6 @@ data = pd.DataFrame(columns=["city_name", "temperature", "humidity", "wind_speed
 if 'df' not in st.session_state:
     st.session_state.df = data
 
-
 def get_data():
     """Fetches weather data for a given city name and updates the DataFrame in session state"""
     if name_input != '':
@@ -42,9 +41,11 @@ def get_data():
             if data is None:
                 st.warning(f"No weather data found for city: {name_input}")
             else:
+                # Convert temperature from Kelvin to Celsius
+                temp_celsius = data['main']['temp'] - 273.15
                 new_row = {
                     'city_name': name_input,
-                    'temperature': data['main']['temp'],
+                    'temperature': temp_celsius,
                     'humidity': data['main']['humidity'],
                     'wind_speed': data['wind']['speed'],
                 }
@@ -64,6 +65,13 @@ plot_type = st.selectbox(
     ('temperature', 'humidity', 'wind_speed')
 )
 
+# Define units for each weather factor
+units = {
+    'temperature': '°C',
+    'humidity': '%',
+    'wind_speed': 'm/s'
+}
+
 # Plot data if DataFrame is not empty
 if not st.session_state.df.empty:
     st.dataframe(st.session_state.df)
@@ -73,7 +81,7 @@ if not st.session_state.df.empty:
     ax.set_xticklabels(st.session_state.df['city_name'], rotation=45)
 
     st.pyplot(fig)
-    st.write(f"*Bar shows {plot_type}")
+    st.write(f"*Bar shows {plot_type} in {units[plot_type]}")
 
     def clear_all():
         """Clears all fetched data from the session state"""
